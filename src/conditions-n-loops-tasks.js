@@ -21,8 +21,8 @@
  *  0  => true
  *  -5 => false
  */
-function isPositive(/* number */) {
-  throw new Error('Not implemented');
+function isPositive(number) {
+  return number >= 0;
 }
 
 /**
@@ -38,8 +38,14 @@ function isPositive(/* number */) {
  *  -5, 0, 5      => 5
  *  -0.1, 0, 0.2  => 0.2
  */
-function getMaxNumber(/* a, b, c */) {
-  throw new Error('Not implemented');
+function getMaxNumber(a, b, c) {
+  if (a > b && a > c) {
+    return a;
+  }
+  if (b > a && b > c) {
+    return b;
+  }
+  return c;
 }
 
 /**
@@ -60,8 +66,18 @@ function getMaxNumber(/* a, b, c */) {
  * {x: 1, y: 1}, {x: 2, y: 8} => false
  * {x: 1, y: 1}, {x: 2, y: 8} => false
  */
-function canQueenCaptureKing(/* queen, king */) {
-  throw new Error('Not implemented');
+function canQueenCaptureKing(queen, king) {
+  if (queen.x === king.x || queen.y === king.y) {
+    return true;
+  }
+  const xShift = Math.abs(queen.x - king.x);
+  const yShift = Math.abs(queen.y - king.y);
+
+  if (xShift === yShift) {
+    return true;
+  }
+
+  return false;
 }
 
 /**
@@ -82,8 +98,15 @@ function canQueenCaptureKing(/* queen, king */) {
  *  2, 2, 5   => false
  *  3, 0, 3   => false
  */
-function isIsoscelesTriangle(/* a, b, c */) {
-  throw new Error('Not implemented');
+function isIsoscelesTriangle(a, b, c) {
+  if (a === 0 || b === 0 || c === 0 || a > b + c || b > a + c || c > a + b) {
+    return false;
+  }
+
+  if (a === b || b === c || c === a) {
+    return true;
+  }
+  return false;
 }
 
 /**
@@ -100,8 +123,35 @@ function isIsoscelesTriangle(/* a, b, c */) {
  *  10  => X
  *  26  => XXVI
  */
-function convertToRomanNumerals(/* num */) {
-  throw new Error('Not implemented');
+function convertToRomanNumerals(num) {
+  let result = '';
+  let numb = num;
+
+  while (numb >= 10) {
+    result += 'X';
+    numb -= 10;
+  }
+
+  while (numb >= 9) {
+    result += 'IX';
+    numb -= 9;
+  }
+
+  while (numb >= 5) {
+    result += 'V';
+    numb -= 5;
+  }
+
+  while (numb >= 4) {
+    result += 'IV';
+    numb -= 4;
+  }
+
+  while (numb >= 1) {
+    result += 'I';
+    numb -= 1;
+  }
+  return result;
 }
 
 /**
